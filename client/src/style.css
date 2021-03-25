@@ -1,0 +1,39 @@
+/* ALL COMPONENTS */
+body {
+  margin: 0;
+  background-color: rgb(230,230,230);
+}
+
+a {
+  color: rgb(250,250,250);
+  text-decoration: none;
+}
+
+/* NAVBAR */
+.navbar {
+  background-color: rgb(171, 130, 238);
+}
+
+.main-body {
+  margin-top: 0.5rem;
+}
+
+/* SEARCH PAGE */
+.search-area {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.search-results-hidden {
+  display: none;
+}
+
+.search-results {
+  padding: 0.5rem;
+  min-height: 4rem;
+}
+
+/* SAVED PAGE */
+.saved-area {
+  padding: 0.5rem;
+}
