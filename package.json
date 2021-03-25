@@ -1,0 +1,25 @@
+{
+  "name": "utor-googlebooks",
+  "version": "0.1.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "cd ./client && npm run build && cd .. && npm run start",
+    "start": "node server.js",
+    "start:react": "cd ./client && npm run start",
+    "build:react": "cd ./client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinsinkun/UTOR-Googlebooks.git"
+  },
+  "author": "JCX",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sinsinkun/UTOR-Googlebooks/issues"
+  },
+  "homepage": "https://github.com/sinsinkun/UTOR-Googlebooks#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
