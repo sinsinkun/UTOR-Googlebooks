@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <AppBar position="static" className="navbar">
       <Toolbar>
-        <Typography>Google Books Search</Typography>
+        <Typography variant="h6">Google Books Search</Typography>
         <div style={{marginLeft:"auto"}}>
           <NavLink to="/"><Button color="inherit">Search</Button></NavLink>
           <NavLink to="/saved"><Button color="inherit">Saved</Button></NavLink>

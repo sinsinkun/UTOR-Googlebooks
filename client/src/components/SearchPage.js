@@ -1,24 +1,51 @@
-import { Card, TextField, Grid, Typography, Button } from '@material-ui/core';
+import { Card, TextField, Grid, Typography, Button, CircularProgress } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 function SearchPage() {
 
   const [searchTerm, setSearchTerm] = useState("");
+  const [results, setResults] = useState([]);
+  const [receivedResults, setReceived] = useState(false);
+  const searchArea = useRef(null);
+  const resultsArea = useRef(null);
 
   function handleEnterKey(e) {
     if (e.key === "Enter") performSearch();
   }
 
-  function performSearch() {
+  async function performSearch() {
     console.log("Searching for", searchTerm);
     setSearchTerm("");
+    if (searchArea.current.classList.contains("search-area-init")) {
+      searchArea.current.classList.remove("search-area-init");
+      searchArea.current.classList.add("search-area");
+    }
+    if (resultsArea.current.classList.contains("hidden")) {
+      resultsArea.current.classList.remove("hidden")
+    }
+    // perform API search
+    setTimeout(() => setReceived(true), 1500);
+  }
+
+  function displayResults() {
+
+    if (results.length < 1) {
+      return <Typography variant="body1">No results found. Try searching for something else.</Typography>;
+    }
+
+    return(
+      results.map(result => 
+        <Grid item xs={12} sm={6} md={3}>{result}</Grid>
+      )
+    )
+
   }
 
   return(
     <>
-      <Card className="search-area">
-        <Typography>Search</Typography>
+      <Card className="search-area-init" ref={searchArea}>
+        <Typography variant="h6">Search</Typography>
         <Grid container spacing={1} justify="center" alignItems="flex-end">
           <Grid item>
             <Search />
@@ -33,8 +60,11 @@ function SearchPage() {
         </Grid>
       </Card>
 
-      <Card className="search-results">
-        <Typography>Results</Typography>
+      <Card className="search-results hidden" ref={resultsArea}>
+        <Typography variant="h6" style={{marginBottom:"0.5rem"}}>Results</Typography>
+        <Grid container spacing={1} justify="center" >
+          { receivedResults ? displayResults() : <CircularProgress />}
+        </Grid>
       </Card>
     </>
   )
