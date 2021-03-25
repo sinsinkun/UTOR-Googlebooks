@@ -6,11 +6,15 @@ const PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // express middleware for displaying built react app
-app.use( express.static('../react101/build') );
+app.use( express.static('./client/build') );
+
+// connect to route file for API handling
+require('./router.js')(app);
 
 // display all pages from react
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../react101/build/index.html'));
+  console.log("[HTML GET]: Get React app");
+  res.sendFile('./client/build/index.html', {root:"."});
 });
 
 // open server
