@@ -4,8 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import BookEntry from './BookEntry';
 import { useStoreContext } from './GlobalData';
 
-// const API_KEY = process.env.API_KEY || "AIzaSyDrCATF5oUe3dG37jTaSAOtQ3y5fyqQY6g";
-
 function SearchPage() {
 
   const [results, setResults] = useStoreContext();
