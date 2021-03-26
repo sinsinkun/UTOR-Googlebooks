@@ -4,17 +4,20 @@ import "./style.css";
 import Navbar from './components/Navbar';
 import SearchPage from './components/SearchPage';
 import SavedPage from './components/SavedPage';
+import { StoreProvider } from './components/GlobalData';
 
 function App() {
   return (
     <Router>
       <Navbar />
-      <Container  maxWidth="md" className="main-body">
-        <Switch>
-          <Route exact path="/"><SearchPage /></Route>
-          <Route path="/saved"><SavedPage /></Route>
-        </Switch>
-      </Container>
+      <StoreProvider>
+        <Container  maxWidth="md" className="main-body">
+          <Switch>
+            <Route exact path="/"><SearchPage /></Route>
+            <Route path="/saved"><SavedPage /></Route>
+          </Switch>
+        </Container>
+      </StoreProvider>
     </Router>
   );
 }

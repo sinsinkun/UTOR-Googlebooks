@@ -1,6 +1,6 @@
 import { Grid, Typography, Button, Paper, ButtonGroup } from '@material-ui/core';
 
-function BookEntry(props) {
+function SavedEntry(props) {
 
   function renderImage() {
     if (props.book.imageLinks) return <img src={props.book.imageLinks.thumbnail} alt={props.book.title} />
@@ -26,13 +26,9 @@ function BookEntry(props) {
     else return props.description;
   }
 
-  async function saveBook() {
-    // call API
+  async function deleteBook() {
     console.log("trying to save book", props.book.title);
-    const res = await fetch("/api/saved", {
-      method: "POST",
-      body: props.book
-    })
+    const res = await fetch(`/api/saved/${props.bookid}`, { method: "DELETE" });
     console.log(res);
   }
 
@@ -47,11 +43,11 @@ function BookEntry(props) {
         <Typography variant="body2">{renderDescription()}</Typography>
         <ButtonGroup variant="text" fullWidth>
           <Button href={props.book.previewLink}>Read</Button>
-          <Button onClick={saveBook}>Save</Button>
+          <Button onClick={deleteBook}>Delete</Button>
         </ButtonGroup>
       </Paper>
     </Grid>
   )
 }
 
-export default BookEntry;
+export default SavedEntry;
