@@ -27,8 +27,9 @@ function SavedEntry(props) {
   }
 
   async function deleteBook() {
-    console.log("trying to save book", props.book.title);
-    const res = await fetch(`/api/saved/${props.bookid}`, { method: "DELETE" });
+    console.log("trying to remove entry", props.bookid);
+    const res = await fetch(`/api/saved/${props.bookid}`, { method: "DELETE" }).then(r => r.text());
+    props.setRerender(prev => !prev);
     console.log(res);
   }
 

@@ -27,12 +27,12 @@ function BookEntry(props) {
   }
 
   async function saveBook() {
-    // call API
-    console.log("trying to save book", props.book.title);
+    console.log("trying to save book", props.bookid);
     const res = await fetch("/api/saved", {
       method: "POST",
-      body: props.book
-    })
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(props.book)
+    }).then(r => r.text());
     console.log(res);
   }
 

@@ -1,11 +1,12 @@
 import { Card, Typography, Grid } from '@material-ui/core';
 import { useState, useEffect } from 'react';
 
-import SavedEntry from './BookEntry';
+import SavedEntry from './SavedEntry';
 
 function SavedPage() {
 
   const [savedData, setSavedData] = useState([]);
+  const [rerender, setRerender] = useState(true);
 
   useEffect(() => {
     // on page load, fetch DB data
@@ -14,14 +15,14 @@ function SavedPage() {
       const res = await fetch("./api/saved").then(r => r.json());
       console.log(res);
       // save to state
-      setSavedData([]);
+      setSavedData(res);
     }
     fetchData();
-  },[])
+  },[rerender])
 
   function renderSaved() {
     if (savedData.length < 1) return <Typography>There's nothing here right now</Typography>;
-    return savedData.map(result => <SavedEntry bookid={result._id} book={result.volumeInfo} />)
+    return savedData.map(entry => <SavedEntry setRerender={setRerender} bookid={entry._id} book={entry} />)
   }
 
   return(
