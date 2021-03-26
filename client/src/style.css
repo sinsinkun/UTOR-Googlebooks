@@ -47,6 +47,18 @@ a {
   min-height: 3rem;
 }
 
+.book-card {
+  min-height: 20rem;
+  margin: 0.2rem;
+  padding: 0.2rem;
+  background-color: rgb(171, 130, 238);
+}
+
+.book-card img {
+  height: 5rem;
+  margin-bottom: auto;
+}
+
 /* SAVED PAGE */
 .saved-area {
   padding: 0.5rem;
