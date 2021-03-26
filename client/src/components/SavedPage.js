@@ -13,11 +13,10 @@ function SavedPage() {
       console.log("fetching saved data");
       const res = await fetch("./api/saved").then(r => r.json());
       console.log(res);
-      return [];
+      // save to state
+      setSavedData([]);
     }
-    let data = fetchData();
-    // save to entry
-    setSavedData(data);
+    fetchData();
   },[])
 
   function renderSaved() {
